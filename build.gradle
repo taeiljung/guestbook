@@ -1,4 +1,8 @@
-
+buildscript {
+    ext {
+        queryDslVersion = "5.0.0"
+    }
+}
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.0.5'
@@ -50,7 +54,12 @@ querydsl {
 }
 
 sourceSets {
-    main.java.srcDir querydslDir
+//    main.java.srcDir querydslDir
+    main{
+        java{
+            srcDirs = ["$projectDir/src/main/java","$projectDir/build/generated"]
+        }
+    }
 }
 
 configurations {
