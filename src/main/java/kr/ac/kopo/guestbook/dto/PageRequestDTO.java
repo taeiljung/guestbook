@@ -18,7 +18,9 @@ public class PageRequestDTO {
         this.size = 10;
     }
 
-    public Pageable getPageable(Sort sort) {
+    public Pageable getPageable(Sort sort) { //페이지를 요청할 때의 정보들이 이곳에 저장된다고 볼 수 있다.
+
         return PageRequest.of(page -1, size, sort);
+
     }
 }
