@@ -27,7 +27,7 @@ public class GuestbookServiceImpl implements GuestbookService{
         Guestbook entity = dtoToEntity(dto);
         log.info(entity); // 생성시 dto에서 entity로 변환된 Guestbook 객체 로그출력.
         repository.save(entity);
-        return null;
+        return entity.getGno();
     }
 
     @Override

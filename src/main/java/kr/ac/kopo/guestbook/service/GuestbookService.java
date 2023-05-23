@@ -7,6 +7,7 @@ import kr.ac.kopo.guestbook.entity.Guestbook;
 
 public interface GuestbookService {
     Long register(GuestbookDTO dto); // 방명록 등록 시나리오
+
     PageResultDTO<GuestbookDTO,Guestbook> getList(PageRequestDTO requestDTO);
     default Guestbook dtoToEntity(GuestbookDTO dto) {
         Guestbook entity = Guestbook.builder()
