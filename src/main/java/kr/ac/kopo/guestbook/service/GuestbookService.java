@@ -6,9 +6,12 @@ import kr.ac.kopo.guestbook.dto.PageResultDTO;
 import kr.ac.kopo.guestbook.entity.Guestbook;
 
 public interface GuestbookService {
+    void remove(Long gno);
+    void modify(GuestbookDTO dto);
     Long register(GuestbookDTO dto); // 방명록 등록 시나리오
 
     PageResultDTO<GuestbookDTO,Guestbook> getList(PageRequestDTO requestDTO);
+    GuestbookDTO read(Long gno);
     default Guestbook dtoToEntity(GuestbookDTO dto) {
         Guestbook entity = Guestbook.builder()
                 .gno(dto.getGno()) // 이 정보들은 각각 GuestbookDTO에 생성한 필드다.

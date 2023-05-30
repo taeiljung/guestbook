@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 @Service // 스프링 빈으로처리되도록 어노테이션 추가
@@ -19,6 +20,28 @@ import java.util.function.Function;
 @RequiredArgsConstructor
 public class GuestbookServiceImpl implements GuestbookService{
     private final GuestbookRepository repository;
+
+    @Override
+    public GuestbookDTO read(Long gno) {
+        Optional<Guestbook> result = repository.findById(gno);
+        return result.isPresent()? entityToDto(result.get()) : null;
+    }
+
+    @Override
+    public void remove(Long gno) {
+        repository.deleteById(gno);
+    }
+
+    @Override
+    public void modify(GuestbookDTO dto) {
+        Optional<Guestbook> result = repository.findById(dto.getGno());
+        if(result.isPresent()){
+            Guestbook entity = result.get();
+            entity.changeTitle(dto.getTitle());
+            entity.changeContent(dto.getContent());
+            repository.save(entity);
+        }
+    }
 
     @Override
     public Long register(GuestbookDTO dto){
