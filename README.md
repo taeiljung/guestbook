@@ -44,12 +44,9 @@
 
 프로젝트 진행 중 경험한 문제와, 해결방안을 기재하였습니다.
 
-1. **레이아웃 디자인 문제**: 
-
-2. **로그인 이후 페이지 전달 문제**: 
-
-3. **테마 고정 문제**: 
-
-4. **Cloud Firestore의 DB 체계**: 
-
+1. **DB연결문제 : DB포트충돌**
+   - 이전에 설치해두었던 Mysql과 포트충돌이 발생, 
+   - application.properties 내부의 spring.datasource.url=jdbc:mariadb://localhost:{{포트}}/bootex
+   - 에서 포트번호를 3306에서 3307로 연결하여 문제해결
+  
 
